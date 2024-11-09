@@ -46,6 +46,11 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        if(getSupportActionBar() != null){
+            getSupportActionBar().hide();
+        }
+
+
         signupEmail = findViewById(R.id.signup_email);
         signupPassword = findViewById(R.id.signup_password);
         signupConfirmPassword = findViewById(R.id.signup_confirm_password);

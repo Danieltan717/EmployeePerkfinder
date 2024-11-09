@@ -51,6 +51,11 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 //        setTheme(R.style.Theme_AppCompat_Light);
+        setContentView(R.layout.activity_login);
+
+        if(getSupportActionBar() != null){
+            getSupportActionBar().hide();
+        }
 
         SharedPreferences sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE);
         boolean isLoggedIn = sharedPreferences.getBoolean("isLoggedIn", false);

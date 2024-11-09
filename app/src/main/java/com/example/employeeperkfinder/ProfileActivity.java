@@ -2,6 +2,9 @@ package com.example.employeeperkfinder;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -24,6 +27,13 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
 
+// Added this myself
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.WriterException;
+import com.google.zxing.common.BitMatrix;
+
+
 public class ProfileActivity extends AppCompatActivity {
 
     private DatabaseReference userRef;
@@ -35,6 +45,10 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_profile);
+
+        if(getSupportActionBar() != null){
+            getSupportActionBar().hide();
+        }
 
         // Adjust padding for system bars (status bar, navigation bar, etc.)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
@@ -65,6 +79,17 @@ public class ProfileActivity extends AppCompatActivity {
             Toast.makeText(ProfileActivity.this, "No user is logged in", Toast.LENGTH_SHORT).show();
         };
 
+
+        // Disabled category button warning users to return to home before accessing button
+        ImageButton btnPlaceCategories = findViewById(R.id.img_category);
+        btnPlaceCategories.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Display warning message
+                Toast.makeText(ProfileActivity.this, "Return to the home screen to access this feature", Toast.LENGTH_SHORT).show();  // ¯\_(ツ)_/¯ ~Justyn
+            }
+        });
+
         // Home Button click listener
         ImageButton btnHome = findViewById(R.id.btn_home);
         btnHome.setOnClickListener(new View.OnClickListener() {
@@ -83,8 +108,9 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Start ProfileActivity when the Profile button is clicked
-                Intent intent = new Intent(ProfileActivity.this, ProfileActivity.class);
-                startActivity(intent);
+                Toast.makeText(ProfileActivity.this, "You are already at the profile screen!", Toast.LENGTH_SHORT).show(); // Replaced previous logic with this toast. Should prevent constant page switching while in the same page ~Justyn
+//                Intent intent = new Intent(ProfileActivity.this, ProfileActivity.class);
+//                startActivity(intent);
             }
         });
 
@@ -125,19 +151,37 @@ public class ProfileActivity extends AppCompatActivity {
         });
     }
 
+
     private void generateQrCode(String employeeId) {
+        // Changed the QR generation because I have OCD ~Justyn
         try {
-            // Initialize BarcodeEncoder and generate QR code
-            BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
-            // Generate QR code bitmap from the employee_id
-            android.graphics.Bitmap bitmap = barcodeEncoder.encodeBitmap(employeeId, com.google.zxing.BarcodeFormat.QR_CODE, 800, 800);
-            // Set the generated bitmap to the ImageView
+            // Generate BitMatrix representing the QR code
+            MultiFormatWriter writer = new MultiFormatWriter();
+            BitMatrix matrix = writer.encode(employeeId, BarcodeFormat.QR_CODE, 350, 350); // Adjust width & height as needed
+
+            // Convert BitMatrix to a transparent Bitmap
+            int width = matrix.getWidth();
+            int height = matrix.getHeight();
+            int[] pixels = new int[width * height];
+
+            for (int y = 0; y < height; y++) {
+                int offset = y * width;
+                for (int x = 0; x < width; x++) {
+                    pixels[offset + x] = matrix.get(x, y) ? 0xFF000000 : 0x00000000; // Black or transparent pixel
+                }
+            }
+
+            Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+            bitmap.setPixels(pixels, 0, width, 0, 0, width, height);
+
+            // Set the transparent QR code to the ImageView
             qrCodeImageView.setImageBitmap(bitmap);
-        } catch (Exception e) {
+        } catch (WriterException e) {
             Log.e("ProfileActivity", "Error generating QR code", e);
             Toast.makeText(ProfileActivity.this, "Failed to generate QR code.", Toast.LENGTH_SHORT).show();
         }
     }
+
 
     public void logout() {
         // Set isLoggedIn to false in SharedPreferences

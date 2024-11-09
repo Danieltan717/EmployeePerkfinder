@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     private AutoCompleteTextView searchBar;
     private List<String> locationNames = new ArrayList<>();
-    private Button btnSearch;
+    private ImageButton btnSearch;
     private LinearLayout categoryButtonsContainer; // Container for buttons
 
     private LinearLayout categoryPopup;
@@ -132,7 +132,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         btnHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, MainActivity.class));
+                Toast.makeText(MainActivity.this, "You are already at the home screen!", Toast.LENGTH_SHORT).show(); // Replaced previous logic with this toast. Should prevent constant page switching while in the same page ~Justyn
+//                startActivity(new Intent(MainActivity.this, MainActivity.class));
             }
         });
 

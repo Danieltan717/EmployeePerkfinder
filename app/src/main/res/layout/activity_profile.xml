@@ -7,31 +7,35 @@
     android:layout_height="match_parent"
     tools:context=".ProfileActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:padding="8dp"
-        android:layout_above="@+id/profile_layout">
 
-        <ImageView
-            android:id="@+id/qr_code_image_view"
-            android:layout_width="165dp"
-            android:layout_height="165dp"
-            android:layout_marginTop="0dp"/>
-    </LinearLayout>
+    <ImageView
+        android:id="@+id/qr_code_image_view"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_marginTop="20dp" />
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:gravity="center"-->
+<!--        android:padding="8dp"-->
+<!--        android:layout_above="@+id/profile_layout">-->
+<!--    </LinearLayout>-->
 
     <!-- Profile Details Layout -->
     <LinearLayout
         android:id="@+id/profile_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
         android:orientation="vertical"
         android:padding="16dp"
         android:layout_above="@+id/logout_layout"
         android:gravity="center_horizontal"
-        android:background="#e8e8e8">
+        android:background="@drawable/custom_edittext">
 
         <!-- First Name Card -->
         <androidx.cardview.widget.CardView
@@ -182,7 +186,7 @@
         <!-- Address Card -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:backgroundTint="#FFFFFF"
             app:cardElevation="2dp"
@@ -208,12 +212,54 @@
                 <TextView
                     android:id="@+id/text_address"
                     android:layout_width="140dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:textColor="@android:color/black"
-                    android:textSize="16sp"/>
+                    android:textSize="16sp"
+                    android:ellipsize="none"
+                    android:maxLines="4"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
+
+
+
+
+
+<!--        &lt;!&ndash; Address Card &ndash;&gt;-->
+<!--        <androidx.cardview.widget.CardView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="80dp"-->
+<!--            android:layout_margin="10dp"-->
+<!--            android:backgroundTint="#FFFFFF"-->
+<!--            app:cardElevation="2dp"-->
+<!--            app:contentPadding="8dp"-->
+<!--            android:padding="12dp"-->
+<!--            app:cardCornerRadius="30dp">-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:orientation="horizontal"-->
+<!--                android:padding="8dp">-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:text="Address:"-->
+<!--                    android:textColor="@android:color/black"-->
+<!--                    android:textSize="16sp"-->
+<!--                    android:textStyle="bold" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/text_address"-->
+<!--                    android:layout_width="140dp"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:textColor="@android:color/black"-->
+<!--                    android:textSize="16sp"/>-->
+<!--            </LinearLayout>-->
+<!--        </androidx.cardview.widget.CardView>-->
 
     </LinearLayout>
 
@@ -227,22 +273,29 @@
         android:padding="8dp"
         android:layout_above="@id/bottom_navigation">
 
-        <Button
-            android:id="@+id/logout_button"
-            android:text="Log Out"
-            android:textColor="#FFFFFF"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="#8B0000"/>
+
+            <Button
+                android:id="@+id/logout_button"
+                android:text="Log Out"
+                android:textColor="#FFFFFF"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#8B0000"
+                android:drawableEnd="@drawable/baseline_logout_24"
+                android:drawablePadding="20dp"
+                android:paddingStart="24dp"
+                android:paddingEnd="10dp"/>
+
+
     </LinearLayout>
 
     <!-- Bottom Navigation Layout -->
     <LinearLayout
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="60dp"
         android:layout_alignParentBottom="true"
-        android:background="#E0E0E0"
+        android:background="#8692F7"
         android:gravity="center"
         android:orientation="horizontal"
         android:padding="8dp">
@@ -254,13 +307,13 @@
             android:layout_height="48dp"
             android:layout_alignParentTop="true"
             android:layout_margin="16dp"
-            android:src="@drawable/category_icon_black"
+            android:src="@drawable/baseline_format_list_bulleted_24"
             android:contentDescription="Category"
             android:padding="10dp"
             android:clickable="false"
             android:focusable="false"
             android:background="?android:attr/selectableItemBackgroundBorderless"
-            android:tint="@android:color/darker_gray"/>
+            app:tint="#999894" />
 
         <!-- Home Button -->
         <ImageButton
@@ -273,7 +326,7 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="Home"
             android:padding="10dp"
-            android:src="@drawable/home_icon_black" />
+            android:src="@drawable/baseline_home_24" />
 
         <!-- Profile Icon Button -->
         <ImageButton
@@ -286,7 +339,8 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="Profile"
             android:padding="10dp"
-            android:src="@drawable/profile_icon_black" />
+            android:src="@drawable/baseline_person_24_main_app"
+            app:tint="#000000"/>
     </LinearLayout>
 
 </RelativeLayout>

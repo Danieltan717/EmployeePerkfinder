@@ -24,26 +24,29 @@
         android:layout_alignParentTop="true"
         android:orientation="horizontal"
         android:padding="16dp"
-        android:background="@android:color/white">
+        android:background="#8692F7">
 
         <AutoCompleteTextView
             android:id="@+id/search_bar"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:hint="Search location"
             android:singleLine="true"
             android:ellipsize="end"
             android:scrollHorizontally="true"
             android:inputType="text"
             android:focusable="true"
-            android:focusableInTouchMode="true"/>
+            android:focusableInTouchMode="true"
+            android:padding="8dp"/>
 
-        <Button
+        <ImageButton
             android:id="@+id/btn_search"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Search" />
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:padding="8dp"
+            android:src="@drawable/baseline_search_24" />
     </LinearLayout>
 
     <!-- Optional Loading Indicator -->
@@ -124,7 +127,7 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_alignParentBottom="true"
-        android:background="#E0E0E0"
+        android:background="#8692F7"
         android:gravity="center"
         android:orientation="horizontal"
         android:padding="8dp">
@@ -140,7 +143,7 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="Category"
             android:padding="10dp"
-            android:src="@drawable/category_icon_black" />
+            android:src="@drawable/baseline_format_list_bulleted_24" />
 
         <!-- Home Button -->
         <ImageButton
@@ -153,7 +156,7 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="Home"
             android:padding="10dp"
-            android:src="@drawable/home_icon_black" />
+            android:src="@drawable/baseline_home_24" />
 
         <!-- Profile Icon Button -->
         <ImageButton
@@ -166,6 +169,6 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="Profile"
             android:padding="10dp"
-            android:src="@drawable/profile_icon_black" />
+            android:src="@drawable/baseline_person_24_main_app" />
     </LinearLayout>
 </RelativeLayout>
