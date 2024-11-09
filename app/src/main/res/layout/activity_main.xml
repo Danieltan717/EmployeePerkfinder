@@ -1,0 +1,171 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <!-- Google Maps Fragment -->
+    <fragment
+        android:id="@+id/id_map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_above="@+id/bottom_navigation" />
+
+    <!-- LinearLayout for the search bar and button -->
+    <LinearLayout
+        android:id="@+id/search_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:background="@android:color/white">
+
+        <AutoCompleteTextView
+            android:id="@+id/search_bar"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:hint="Search location"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:scrollHorizontally="true"
+            android:inputType="text"
+            android:focusable="true"
+            android:focusableInTouchMode="true"/>
+
+        <Button
+            android:id="@+id/btn_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Search" />
+    </LinearLayout>
+
+    <!-- Optional Loading Indicator -->
+    <ProgressBar
+        android:id="@+id/loading_indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone"/>
+
+    <!-- Category Popup Layout -->
+    <LinearLayout
+        android:id="@+id/category_popup"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:orientation="vertical"
+        android:background="#FFFFFF"
+        android:visibility="gone"
+        android:elevation="8dp"
+        android:padding="8dp"
+        android:layout_above="@+id/bottom_navigation">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/category_buttons_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+        </ScrollView>
+    </LinearLayout>
+
+    <!-- Marker Info Layout -->
+    <RelativeLayout
+        android:id="@+id/marker_info_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:padding="16dp"
+        android:visibility="gone"
+        android:layout_above="@id/bottom_navigation"
+        android:elevation="2dp"
+        android:layout_marginBottom="80dp">
+
+        <TextView
+            android:id="@+id/marker_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="@android:color/black" />
+
+        <TextView
+            android:id="@+id/marker_category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/marker_name"
+            android:layout_marginTop="4dp"
+            android:textSize="16sp"
+            android:textColor="#555555" />
+
+        <TextView
+            android:id="@+id/marker_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/marker_category"
+            android:layout_marginTop="4dp"
+            android:textSize="14sp"
+            android:textColor="@android:color/black" />
+
+    </RelativeLayout>
+
+    <!-- Bottom Navigation -->
+    <LinearLayout
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:background="#E0E0E0"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <!-- Category Toggle Button -->
+        <ImageButton
+            android:id="@+id/btn_category_toggle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="16dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Category"
+            android:padding="10dp"
+            android:src="@drawable/category_icon_black" />
+
+        <!-- Home Button -->
+        <ImageButton
+            android:id="@+id/btn_home"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="16dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Home"
+            android:padding="10dp"
+            android:src="@drawable/home_icon_black" />
+
+        <!-- Profile Icon Button -->
+        <ImageButton
+            android:id="@+id/btn_profile"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="16dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Profile"
+            android:padding="10dp"
+            android:src="@drawable/profile_icon_black" />
+    </LinearLayout>
+</RelativeLayout>

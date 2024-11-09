@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "431875818461",
+    "firebase_url": "https://android-dev-assign-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "android-dev-assign",
+    "storage_bucket": "android-dev-assign.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:431875818461:android:604e407c51a0d046ceec34",
+        "android_client_info": {
+          "package_name": "com.example.employeeperkfinder"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPvru32z42X81XGwdJBFwgIRTZH0wMHUE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:431875818461:android:adbb04189fd30c60ceec34",
+        "android_client_info": {
+          "package_name": "student.inti.android_dev_assign"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPvru32z42X81XGwdJBFwgIRTZH0wMHUE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
