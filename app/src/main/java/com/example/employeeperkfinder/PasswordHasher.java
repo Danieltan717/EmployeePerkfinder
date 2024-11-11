@@ -1,26 +1,6 @@
 package com.example.employeeperkfinder;
 
-//import org.mindrot.jbcrypt.BCrypt;
-//
-//public class PasswordHasher {
-//
-//    // Generates a BCrypt salt
-//    public static String generateSalt() {
-//        return BCrypt.gensalt();
-//    }
-//
-//    // Hashes the password using BCrypt with the provided salt
-//    public static String hashPassword(String password) {
-//        return BCrypt.hashpw(password, generateSalt());
-//    }
-//
-//    // Verifies if the input password matches the stored BCrypt hash
-//    public static boolean verifyPassword(String password, String storedHash) {
-//        return BCrypt.checkpw(password, storedHash);
-//    }
-//}
-
-          //V2.0
+//V2.0
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.UUID;
@@ -58,18 +38,3 @@ public class PasswordHasher {
         return hashToVerify.equals(storedHash);
     }
 }
-
-
-// V1.0
-//import org.mindrot.jbcrypt.BCrypt;
-
-
-//public class PasswordHasher {
-//    public static String hashPassword(String plainPassword){
-//        return BCrypt.hashpw(plainPassword, BCrypt.gensalt());
-//    }
-//
-//    public static boolean checkPassword(String plainPassword, String hashedPassword){
-//        return BCrypt.checkpw(plainPassword, hashedPassword);
-//    }
-//}
